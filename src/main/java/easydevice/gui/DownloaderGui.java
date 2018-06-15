@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXProgressBar;
 import easydevice.filemanager.FileDownload;
 import easydevice.parser.File;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,14 +26,20 @@ public class DownloaderGui {
     }
 
     public void start() {
-        Platform.startup(() -> {
+        if (!toolkitIsInitialized()) {
+            Platform.startup(() -> {
+
+            });
+        }
+
+        Platform.runLater(() -> {
             var loader = new FXMLLoader(getClass().getResource("download.fxml"));
             Parent parent = null;
 
             try {
                 parent = loader.load();
             } catch (IOException e) {
-                e.printStackTrace();
+
             }
 
             var scene = new Scene(parent);
@@ -52,6 +57,7 @@ public class DownloaderGui {
             this.fileDownload.call();
             progressBar.progressProperty().bind(this.fileDownload.progressProperty());
         });
+
         this.fileDownload.waitEnd();
 
         Platform.runLater(() -> {
@@ -66,5 +72,17 @@ public class DownloaderGui {
 
     public Path getPath() {
         return this.fileDownload.getPath();
+    }
+
+    private boolean toolkitIsInitialized() {
+        try {
+            Platform.runLater(() -> {
+
+            });
+        } catch (IllegalStateException e) {
+            return false;
+        }
+
+        return true;
     }
 }
