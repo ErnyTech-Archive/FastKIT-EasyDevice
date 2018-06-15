@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import jlang.javafx.Text?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="148.0"
+      prefWidth="603.0"  xmlns="http://javafx.com/javafx/10" xmlns:fx="http://javafx.com/fxml/1">
+    <GridPane alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS"/>
+            <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS"/>
+            <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS"/>
+            <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS"/>
+        </rowConstraints>
+        <VBox.margin>
+            <Insets bottom="10.0" left="8.0" right="8.0" top="10.0"/>
+        </VBox.margin>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" jLangName="file" GridPane.rowIndex="3" fx:id="file"/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" jLangName="download" textAlignment="CENTER"
+              GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP"
+              GridPane.vgrow="ALWAYS"/>
+        <JFXProgressBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.hgrow="ALWAYS"
+                        GridPane.rowIndex="1" GridPane.valignment="CENTER" fx:id="progressBar"/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" jLangName="link" GridPane.rowIndex="2" fx:id="link"/>
+    </GridPane>
+</VBox>

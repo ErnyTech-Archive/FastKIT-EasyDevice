@@ -1,0 +1,6 @@
+<?xml version="1.0"?> 
+<resources>
+    <string name="download">Downloading...</string>
+    <string name="link">Link: </string>
+    <string name="file">File: </string>
+</resources>
