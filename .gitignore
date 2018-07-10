@@ -42,11 +42,6 @@ gradle-app.setting
 # Cache of project
 .gradletasknamecache
 
-# Ignore Gradle Wrapper for Windows because Windoz is a shit operating system
-
-gradlew.bat
-
-
 # -----------
 # Idea ignore
 
