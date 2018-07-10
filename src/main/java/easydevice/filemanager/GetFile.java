@@ -17,7 +17,7 @@ public class GetFile {
     }
 
     public Path get()  {
-        Path path = Paths.get(Init.fastkitDir.toUri().getPath(), this.file.getFileName());
+        Path path = Paths.get(Init.fastkitDir.toString(), this.file.getFileName());
 
         if (!Files.exists(path)) {
             return downloadFile(this.file);

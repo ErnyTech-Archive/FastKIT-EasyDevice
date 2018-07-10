@@ -1,6 +1,8 @@
 package easydevice;
 
 import easydevice.parser.ParseConfig;
+import easydevice.util.exception.CantGetDeviceInfoException;
+import easydevice.util.exception.DeviceConfigMissing;
 import easydevice.util.exception.InitException;
 import fastkit.core.util.Device;
 import jlang.JLang;
@@ -17,7 +19,7 @@ import java.nio.file.Paths;
 public class Init {
     public static Path fastkitDir;
 
-    public static void start(Device device, String masterLink) {
+    public static void start(Device device, String masterLink) throws CantGetDeviceInfoException, DeviceConfigMissing {
         JLang.start("langs");
         EasyDevice.setDevice(device);
         var userHome = System.getProperty("user.home");
@@ -25,7 +27,7 @@ public class Init {
             userHome += File.separator;
         }
 
-        Init.fastkitDir = Paths.get(userHome + ".fastkit");
+        Init.fastkitDir = Paths.get(userHome, ".fastkit");
 
         if(!Files.isDirectory(Init.fastkitDir)) {
             if (Files.exists(Init.fastkitDir)) {
@@ -54,6 +56,7 @@ public class Init {
         try {
             parseConfig.parse(masterLink);
         } catch (IOException | ParserConfigurationException | SAXException e) {
+            e.printStackTrace();
             throw new InitException();
         }
     }

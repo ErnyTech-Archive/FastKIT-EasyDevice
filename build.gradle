@@ -9,9 +9,11 @@ targetCompatibility = 10
 dependencies {
     compile 'com.jfoenix:jfoenix:9.0.4'
 
-    compile 'com.github.ErnyTech:JLang:v0.1-rc1'
+    compile 'com.github.ErnyTech:JLang:master-SNAPSHOT'
 
     compile 'com.github.ErnyTech:FastKIT-Core:v0.1-rc1.1'
+
+    compile 'com.github.ErnyTech:JMFX:master-SNAPSHOT'
 }
 
 // In this section you declare where to find the dependencies of your project
@@ -21,5 +23,14 @@ repositories {
     jcenter()
     maven {
         url 'https://jitpack.io'
+    }
+}
+
+task fatJar(type: Jar) {
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+    manifest {
+        attributes 'Main-Class': 'Main'
     }
 }

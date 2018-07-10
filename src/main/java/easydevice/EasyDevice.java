@@ -1,6 +1,8 @@
 package easydevice;
 
 import easydevice.parser.File;
+import easydevice.util.exception.CantGetDeviceInfoException;
+import easydevice.util.exception.DeviceConfigMissing;
 import fastkit.core.adb.GetDevices;
 import fastkit.core.adb.Mode;
 import fastkit.core.util.Device;
@@ -14,6 +16,15 @@ public class EasyDevice {
     private static File twrp;
     private static File stockRecovery;
     private static String unlockcode;
+    private static final String masterLink = "https://raw.githubusercontent.com/ErnyTech/Fastkit-DevicesConfig/master/master.xml";
+
+    public static void start(Device device, String masterLink) throws CantGetDeviceInfoException, DeviceConfigMissing {
+        Init.start(device, masterLink);
+    }
+
+    public static void start(Device device) throws CantGetDeviceInfoException, DeviceConfigMissing {
+        start(device, EasyDevice.masterLink);
+    }
 
     public static void setDevice(Device device) {
         EasyDevice.device = device;

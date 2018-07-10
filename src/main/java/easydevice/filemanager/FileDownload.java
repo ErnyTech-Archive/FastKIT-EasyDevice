@@ -24,7 +24,7 @@ public class FileDownload extends Task<Void> {
 
     public FileDownload(File file) {
         this.link = file.getLink();
-        this.path = Paths.get(Init.fastkitDir.toUri().getPath(), file.getFileName());
+        this.path = Paths.get(Init.fastkitDir.toString(), file.getFileName());
     }
 
     @Override
